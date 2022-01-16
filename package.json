@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "nyc mocha --timeout=10000 --exit",
     "lint": "eslint \"**/*.js\""
   },
@@ -82,6 +82,7 @@
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
+    "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
     "sinon": "^9.2.3",
     "supertest": "^6.0.1"
