@@ -1,0 +1,10 @@
+extends Layout
+
+block content
+  if (users)
+    .users
+    ul 
+      each val in users
+        li= val.profile.name 
+          //- a.pl-5(href=`/members/+{val.profile.name}`) View Profile
+          a.pl-5(href=`/members`) View Profile
