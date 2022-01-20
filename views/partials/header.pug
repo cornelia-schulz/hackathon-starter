@@ -16,6 +16,8 @@
           a.nav-link(href='/api') API Examples
         li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
           a.nav-link(href='/contact') Contact
+        li.nav-item(class=(title === 'About') ? 'active': undefined)
+          a.nav-link(href='/about') About
       ul.nav.navbar-nav.ml-auto
         if !user
           li.nav-item(class=(title === 'Login') ? 'active' : undefined)

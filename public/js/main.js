@@ -46,7 +46,6 @@ $(document).ready(() => {
     const galleryImage = document.getElementsByClassName('galleryImage')[0];
     galleryImage.src = images[imageIndex].src;
     galleryImage.alt = images[imageIndex].title;
-    console.log('setGalleryImage');
   }
 
   function setThumbnails(images, currentImage) {
@@ -83,15 +82,38 @@ $(document).ready(() => {
   }
 
   function updateImages() {
-    const imageIndex = images.findIndex(i => i.thumbnail === $(this).closest('img')[0].currentSrc);
+    const imageIndex = images.findIndex((i) => i.thumbnail === $(this).closest('img')[0].currentSrc);
     currentImageIndex = imageIndex;
     setGalleryImage(images, currentImageIndex);
     setThumbnails(images, currentImageIndex);
   }
 
-  document.getElementsByClassName('previousImage')[0].addEventListener('click', setPreviousImage);
-  document.getElementsByClassName('nextImage')[0].addEventListener('click', setNextImage);
-  setGalleryImage(images, currentImageIndex);
-  setThumbnails(images, currentImageIndex);
-  [...thumbnails].forEach((t) => t.addEventListener('click', updateImages));
+  if (document.title === 'Gallery - Hackathon Starter') {
+    document.getElementsByClassName('previousImage')[0].addEventListener('click', setPreviousImage);
+    document.getElementsByClassName('nextImage')[0].addEventListener('click', setNextImage);
+    setGalleryImage(images, currentImageIndex);
+    setThumbnails(images, currentImageIndex);
+    [...thumbnails].forEach((t) => t.addEventListener('click', updateImages));
+  }
+
+  /** About Page */
+  function switchPageColour() {
+    const navBar = document.getElementsByClassName('navbar')[0];
+    const body = document.getElementsByTagName('body')[0];
+    const lightSwitch = document.getElementsByClassName('light-switch')[0];
+    if (lightSwitch.innerHTML === 'Switch the light off') {
+      lightSwitch.innerHTML = 'Switch the light on';
+      body.classList.add('bg-dark', 'text-light');
+      navBar.classList.remove('bg-light');
+      navBar.classList.add('bg-dark');
+    } else {
+      lightSwitch.innerHTML = 'Switch the light off';
+      body.classList.remove('bg-dark', 'text-light');
+      navBar.classList.add('bg-light', 'navbar-light');
+      navBar.classList.remove('bg-dark');
+    }
+  }
+  if (document.title === 'About - Hackathon Starter') {
+    document.getElementsByClassName('light-switch')[0].addEventListener('click', switchPageColour);
+  }
 });
